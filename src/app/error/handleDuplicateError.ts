@@ -1,6 +1,4 @@
-import { TGenericErrorResponse,TErrorSources } from "../interface/error";
-
-
+import { TGenericErrorResponse, TErrorSources } from "../interface/error";
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const handleDuplicateError = (err: any): TGenericErrorResponse => {
@@ -12,7 +10,7 @@ const handleDuplicateError = (err: any): TGenericErrorResponse => {
 
   const errorSources: TErrorSources = [
     {
-      path: '',
+      path: "",
       message: `${extractedMessage} is already exists`,
     },
   ];
@@ -21,7 +19,7 @@ const handleDuplicateError = (err: any): TGenericErrorResponse => {
 
   return {
     statusCode,
-    message: 'Invalid ID',
+    message: "Invalid ID",
     errorSources,
   };
 };

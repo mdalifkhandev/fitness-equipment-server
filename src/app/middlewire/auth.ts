@@ -1,21 +1,15 @@
-import { NextFunction, Request, Response } from 'express';
-import httpStatus from 'http-status';
-import jwt, { JwtPayload } from 'jsonwebtoken';
-import config from '../config';
-import { User } from '../modiuls/users/user.model';
-import catchAsync from '../utils/catchAsyinc';
-import AppError from '../error/AppError';
-
-
+import { NextFunction, Request, Response } from "express";
+import httpStatus from "http-status";
+import jwt, { JwtPayload } from "jsonwebtoken";
+import config from "../config";
+import { User } from "../modiuls/users/user.model";
+import catchAsync from "../utils/catchAsyinc";
+import AppError from "../error/AppError";
 
 type TUserRole = {
-  user: 'user',
-  seller:'sellwr'
-} 
-
-
-
-
+  user: "user";
+  seller: "sellwr";
+};
 
 const auth = (...requiredRoll: TUserRole[]) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
@@ -25,15 +19,14 @@ const auth = (...requiredRoll: TUserRole[]) => {
       throw new AppError(httpStatus.NOT_FOUND, `You have not authrize`);
     }
 
-    let decoded
-    try{
-
+    let decoded;
+    try {
       decoded = jwt.verify(
         token,
         config.JWT_ACCESS_TOKEN as string,
       ) as JwtPayload;
-    }catch(error){
-      throw new AppError(httpStatus.UNAUTHORIZED,'Unauthroized')
+    } catch (error) {
+      throw new AppError(httpStatus.UNAUTHORIZED, "Unauthroized");
     }
 
     const { role, userId, iat } = decoded;
@@ -48,32 +41,15 @@ const auth = (...requiredRoll: TUserRole[]) => {
     const user = await User.findOne(userId);
 
     if (!user) {
-      throw new AppError(httpStatus.NOT_FOUND, 'This user is not found !');
+      throw new AppError(httpStatus.NOT_FOUND, "This user is not found !");
     }
     // checking if the user is already deleted
 
     const isDeleted = user?.isDeleted;
 
     if (isDeleted) {
-      throw new AppError(httpStatus.FORBIDDEN, 'This user is deleted !');
+      throw new AppError(httpStatus.FORBIDDEN, "This user is deleted !");
     }
-
-    // checking if the user is blocked
-    // const userStatus = user?.status;
-
-    // if (userStatus === 'blocked') {
-    //   throw new AppError(httpStatus.FORBIDDEN, 'This user is blocked ! !');
-    // }
-
-    // if (
-    //   user.passwordChangedAt &&
-    //   User.isJWTIssuedBeforePasswordChanged(
-    //     user.passwordChangedAt,
-    //     iat as number,
-    //   )
-    // ) {
-    //   throw new AppError(httpStatus.UNAUTHORIZED, 'You are not authorized !');
-    // }
 
     req.user = decoded;
     next();
