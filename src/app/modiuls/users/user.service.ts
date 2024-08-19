@@ -12,7 +12,6 @@ const createUserFromDB = async (payloads: TUsers) => {
       "Account already opened with this email",
     );
   }
-  console.log(isExixitUser);
 
   const resualt = await User.create(payloads);
   return resualt;

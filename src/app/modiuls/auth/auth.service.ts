@@ -45,8 +45,6 @@ const loginUserFeomDb = async (payloads: TLoginUser) => {
     config.JWT_REFRESS_TIME as string,
   );
 
-  console.log(user);
-
   return {
     accessToken,
     refressToken,

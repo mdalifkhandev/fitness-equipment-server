@@ -25,11 +25,11 @@ const auth = (...requiredRoll: TUserRole[]) => {
         token,
         config.JWT_ACCESS_TOKEN as string,
       ) as JwtPayload;
-    } catch (error) {
+    } catch {
       throw new AppError(httpStatus.UNAUTHORIZED, "Unauthroized");
     }
 
-    const { role, userId, iat } = decoded;
+    const { role, userId } = decoded;
 
     if (requiredRoll && !requiredRoll.includes(role)) {
       throw new AppError(
