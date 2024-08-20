@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { UserRouter } from "../modiuls/users/user.router";
 import { AuthRouter } from "../modiuls/auth/auth.router";
+import { ProductRouter } from "../modiuls/products/products.router";
 
 const router = Router();
 
@@ -12,6 +13,10 @@ const mosuleRouter = [
   {
     path: "/auth",
     router: AuthRouter,
+  },
+  {
+    path: "/products",
+    router: ProductRouter,
   },
 ];
 
