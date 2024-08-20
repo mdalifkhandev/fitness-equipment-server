@@ -1,6 +1,8 @@
 export type TProducts = {
   name: string;
-  image: string;
+  image: {
+    img1:string
+  };
   rating: number;
   price: number;
   discreption: string;
@@ -8,8 +10,8 @@ export type TProducts = {
     header: string;
     details: string;
   };
-
   catagory: string;
   review: number;
   instock: number;
+  discount:number
 };

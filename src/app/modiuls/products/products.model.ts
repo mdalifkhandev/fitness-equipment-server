@@ -7,8 +7,11 @@ const productsSchema = new Schema<TProducts>({
     required: true,
   },
   image: {
-    type: String,
-    required: true,
+    img1:{
+        type: String,
+        required: true,
+    }
+    
   },
   rating: {
     type: Number,
@@ -41,6 +44,10 @@ const productsSchema = new Schema<TProducts>({
     required: true,
   },
   instock: {
+    type: Number,
+    required: true,
+  },
+  discount: {
     type: Number,
     required: true,
   },
