@@ -1,7 +1,7 @@
 export type TProducts = {
   name: string;
   image: {
-    img1:string
+    img1: string;
   };
   rating: number;
   price: number;
@@ -13,5 +13,5 @@ export type TProducts = {
   catagory: string;
   review: number;
   instock: number;
-  discount:number
+  discount: number;
 };

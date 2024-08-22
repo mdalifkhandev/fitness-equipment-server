@@ -7,11 +7,10 @@ const productsSchema = new Schema<TProducts>({
     required: true,
   },
   image: {
-    img1:{
-        type: String,
-        required: true,
-    }
-    
+    img1: {
+      type: String,
+      required: true,
+    },
   },
   rating: {
     type: Number,
