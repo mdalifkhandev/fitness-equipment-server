@@ -6,9 +6,26 @@ import { Products } from "./products.model";
 //   return resualt;
 // };
 const getAllProductsFromDB = async (query: any) => {
-  console.log(query);
-  const resualt = await Products.find();
-  return resualt;
+
+  if (query.catagory === "undefined" && query.name === "undefined") {
+    const resualt = await Products.find();
+    return resualt;
+  }
+  if (query.catagory && (query.name === "undefined" || query.name === "")) {
+    const resualt = await Products.find({ catagory: query.catagory });
+    return resualt;
+  }
+  if ((query.catagory === "undefined" || query.catagory === "") && query.name) {
+    const resualt = await Products.find({ $text: { $search: query.name } });
+    return resualt;
+  }
+  if (query.catagory && query.name) {
+    const resualt = await Products.find({
+      $text: { $search: query.name },
+      catagory: query.catagory,
+    });
+    return resualt;
+  }
 };
 const getSingleProductsFromDB = async (id: string) => {
   const resualt = await Products.findById(id);
