@@ -7,7 +7,6 @@ import { Products } from "./products.model";
 // };
 const getAllProductsFromDB = async (query: any) => {
   console.log(query);
-
   const resualt = await Products.find();
   return resualt;
 };
