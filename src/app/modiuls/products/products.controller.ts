@@ -35,9 +35,41 @@ const getProductsCatagore = catchAsync(async (req, res) => {
     data: resualt,
   });
 });
+const createAddToCard = catchAsync(async (req, res) => {
+  const body = req.body;
+  const resualt = await ProductsService.createAddToCardFromDB(body);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Add To Card Successfully",
+    data: resualt,
+  });
+});
+const getAllAddToCard = catchAsync(async (req, res) => {
+  const resualt = await ProductsService.getAllAddToCardFromDB();
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Your Card Retreve Successfully",
+    data: resualt,
+  });
+});
+const removeAddToCard = catchAsync(async (req, res) => {
+  const id=req.params.id
+  const resualt = await ProductsService.removeAddToCardFromDB(id);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Your Card Retreve Successfully",
+    data: resualt,
+  });
+});
 
 export const ProductsController = {
   getAllProducts,
   getSingleProducts,
   getProductsCatagore,
+  createAddToCard,
+  getAllAddToCard,
+  removeAddToCard
 };

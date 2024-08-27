@@ -5,11 +5,13 @@ import config from "../config";
 import { User } from "../modiuls/users/user.model";
 import catchAsync from "../utils/catchAsyinc";
 import AppError from "../error/AppError";
+import { TUserRole } from "../modiuls/users/user.interfach";
 
-type TUserRole = {
-  user: "user";
-  seller: "sellwr";
-};
+// type TUserRole = {
+//   user: "user";
+//   seller: "seller";
+//   admin: "admin";
+// };
 
 const auth = (...requiredRoll: TUserRole[]) => {
   return catchAsync(async (req: Request, res: Response, next: NextFunction) => {
