@@ -1,13 +1,11 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import httpStatus from "http-status";
 import catchAsync from "../../utils/catchAsyinc";
 import sendResponse from "../../utils/sendResponse";
 import { ProductsService } from "./products.service";
 
 const getAllProducts = catchAsync(async (req, res) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const query: any = req.query;
-  // console.log(query);
-
   const resualt = await ProductsService.getAllProductsFromDB(query);
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -55,7 +53,7 @@ const getAllAddToCard = catchAsync(async (req, res) => {
   });
 });
 const removeAddToCard = catchAsync(async (req, res) => {
-  const id=req.params.id
+  const id = req.params.id;
   const resualt = await ProductsService.removeAddToCardFromDB(id);
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -71,5 +69,5 @@ export const ProductsController = {
   getProductsCatagore,
   createAddToCard,
   getAllAddToCard,
-  removeAddToCard
+  removeAddToCard,
 };

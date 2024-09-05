@@ -38,7 +38,6 @@ const productsSchema = new Schema<TProducts>({
     type: String,
     required: true,
   },
- 
 
   review: {
     type: Number,

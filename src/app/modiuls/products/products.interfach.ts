@@ -17,7 +17,7 @@ export type TProducts = {
 };
 export type TAddToCatd = {
   name: string;
-  productID:string
+  productID: string;
   email: string;
   image: string;
   rating: number;

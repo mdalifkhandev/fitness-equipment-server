@@ -15,19 +15,19 @@ router.get("/catagore", ProductsController.getProductsCatagore);
 
 router.get(
   "/addtocard",
-//   auth(USER_ROLE.user),
+  //   auth(USER_ROLE.user),
   ProductsController.getAllAddToCard,
 );
 router.delete(
   "/addtocard/:id",
-//   auth(USER_ROLE.user),
+  //   auth(USER_ROLE.user),
   ProductsController.removeAddToCard,
 );
 router.get("/:id", ProductsController.getSingleProducts);
 
 router.post(
   "/addtocard",
-//   auth(USER_ROLE.user, USER_ROLE.seller),
+  //   auth(USER_ROLE.user, USER_ROLE.seller),
   validateRequest(ProductsValidation.adddToCardCreateValidationSchema),
   ProductsController.createAddToCard,
 );

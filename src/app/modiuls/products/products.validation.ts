@@ -29,11 +29,8 @@ const adddToCardCreateValidationSchema = z.object({
   review: z.number(),
   instock: z.number(),
   discount: z.number(),
-  productID:z.string()
+  productID: z.string(),
 });
-
-
-
 
 export const ProductsValidation = {
   productsCreateValidationSchema,
