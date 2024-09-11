@@ -7,8 +7,15 @@ const router = e.Router();
 
 router.post(
   "/cteate-user",
-  validateRequest(userValidationSchema.createUserZodValidationSchema),
+  validateRequest(userValidationSchema.createUserValidationSchema),
   UserController.createUser,
 );
+router.post(
+  "/cteate-user-info",
+  validateRequest(userValidationSchema.createUserInfoValidationschema),
+  UserController.createUserInfo,
+);
+router.get("/user-info", UserController.getUserInfo);
+router.get("/user", UserController.getUser);
 
 export const UserRouter = router;

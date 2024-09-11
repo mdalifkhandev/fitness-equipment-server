@@ -29,7 +29,7 @@ const getProductsCatagore = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Products Retrive Successfully",
+    message: "Catagory Retrive Successfully",
     data: resualt,
   });
 });
@@ -58,7 +58,7 @@ const removeAddToCard = catchAsync(async (req, res) => {
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
-    message: "Your Card Retreve Successfully",
+    message: "Your Card Remove Successfully",
     data: resualt,
   });
 });

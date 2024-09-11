@@ -4,10 +4,6 @@ import AppError from "../../error/AppError";
 import { AddToCard } from "./products.model";
 import { Products } from "./products.model";
 
-// const getAllProductsFromDB = async () => {
-//   const resualt = await Products.find();
-//   return resualt;
-// };
 const getAllProductsFromDB = async (query: any) => {
   const { catagory, name, minPrice, maxPrice } = query;
   const categoryArray = catagory ? catagory.split(",") : [];

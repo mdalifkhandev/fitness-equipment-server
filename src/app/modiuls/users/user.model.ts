@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { TUsers } from "./user.interfach";
+import { TUserInfo, TUsers } from "./user.interfach";
 import bcrypt from "bcrypt";
 import config from "../../config";
 
@@ -48,3 +48,37 @@ userSchema.post("save", function (doc, next) {
 });
 
 export const User = model<TUsers>("Users", userSchema);
+
+const userInfoSchema = new Schema<TUserInfo>({
+  userID: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    unique: true,
+  },
+  phone: {
+    type: Number,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+  division: {
+    type: String,
+    required: true,
+  },
+  distric: {
+    type: String,
+    required: true,
+  },
+  upzala: {
+    type: String,
+    required: true,
+  },
+  detailsAddress: {
+    type: String,
+    required: true,
+  },
+});
+
+export const UserInfo = model<TUserInfo>("UsersInfo", userInfoSchema);
