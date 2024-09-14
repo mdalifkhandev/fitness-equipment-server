@@ -9,6 +9,7 @@ const orderDataSchema = z.object({
   userUpzala: z.string().min(1, "Upazila is required"),
   userAddress: z.string().min(1, "Address is required"),
   productsImage: z.string().min(1, "Product image URL is required"),
+  paymentID: z.string().min(5).optional(),
   productsName: z.string().min(1, "Product name is required"),
   productsPrice: z.number().min(0, "Product price must be a positive number"),
   productsQuentity: z.number().min(1, "Quantity must be at least 1"),

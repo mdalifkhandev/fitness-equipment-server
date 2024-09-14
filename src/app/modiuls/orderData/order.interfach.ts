@@ -12,4 +12,5 @@ export type TOrderData = {
   productsQuentity: number;
   productsShipping: number;
   productsTotalPrice: number;
+  paymentID?:string
 };

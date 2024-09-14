@@ -38,6 +38,9 @@ const orderDataSchema = new Schema<TOrderData>({
     type: String,
     required: true,
   },
+  paymentID: {
+    type: String,
+  },
   productsPrice: {
     type: Number,
     required: true,
@@ -54,6 +57,7 @@ const orderDataSchema = new Schema<TOrderData>({
     type: Number,
     required: true,
   },
+  
 });
 
 export const Order = model<TOrderData>("OrderData", orderDataSchema);

@@ -10,5 +10,9 @@ router.post(
   validateRequest(OrderValidation.orderDataSchema),
   OrderDataController.orderDataCreate,
 );
+router.post(
+  "/payment-intent",
+  OrderDataController.orderDataCreate,
+);
 
 export const OrderDataRouter = router;
