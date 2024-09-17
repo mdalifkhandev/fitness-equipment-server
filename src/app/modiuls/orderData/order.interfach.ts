@@ -16,5 +16,5 @@ export type TOrderData = {
   productsTotalPrice: number;
   paymentID?: string;
   productsID: Types.ObjectId;
-  isDeleted:boolean
+  isDeleted: boolean;
 };

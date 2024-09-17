@@ -34,7 +34,7 @@ const getMyCancelOrderData = catchAsync(async (req, res) => {
   });
 });
 const cancelOrder = catchAsync(async (req, res) => {
-  const id = req.query.id as string
+  const id = req.query.id as string;
   const resualt = await OrderDataService.cancelOrderFromDB(id);
   sendResponse(res, {
     statusCode: httpStatus.OK,
@@ -48,5 +48,5 @@ export const OrderDataController = {
   orderDataCreate,
   getMyOrderData,
   cancelOrder,
-  getMyCancelOrderData
+  getMyCancelOrderData,
 };

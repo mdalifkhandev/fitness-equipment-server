@@ -61,10 +61,10 @@ const orderDataSchema = new Schema<TOrderData>({
     type: Schema.Types.ObjectId,
     required: true,
   },
-  isDeleted:{
-    type:Boolean,
-    default:false
-  }
+  isDeleted: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 export const Order = model<TOrderData>("OrderData", orderDataSchema);

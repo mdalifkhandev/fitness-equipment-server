@@ -13,7 +13,7 @@ const orderDataSchema = z.object({
   productsName: z.string().min(1, "Product name is required"),
   productsPrice: z.number().min(0, "Product price must be a positive number"),
   productsQuentity: z.number().min(1, "Quantity must be at least 1"),
-  isDeleted:z.boolean().default(false),
+  isDeleted: z.boolean().default(false),
   productsShipping: z
     .number()
     .min(0, "Shipping cost must be a positive number"),

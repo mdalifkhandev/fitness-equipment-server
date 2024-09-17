@@ -24,39 +24,45 @@ const createOrderDataFromDB = async (payload: any) => {
 };
 
 const getMyOrderFrolDB = async (email: string) => {
-  const orderfilter={
-    isDeleted:false,
-     userEmail: email,
-  }
+  const orderfilter = {
+    isDeleted: false,
+    userEmail: email,
+  };
   const resualt = await Order.find(orderfilter);
   return resualt;
 };
 const getMyCancelOrderFrolDB = async (email: string) => {
-  const orderfilter={
-    isDeleted:true,
-     userEmail: email,
-  }
+  const orderfilter = {
+    isDeleted: true,
+    userEmail: email,
+  };
   const resualt = await Order.find(orderfilter);
   return resualt;
 };
 
-const cancelOrderFromDB=async(id:string)=>{
+const cancelOrderFromDB = async (id: string) => {
+  const orderData = await Order.findById(id);
+  if (!orderData) {
+    throw new AppError(httpStatus.BAD_REQUEST, "This Products is not Exixit");
+  }
+  if (orderData.isDeleted) {
+    throw new AppError(
+      httpStatus.BAD_REQUEST,
+      "This Products is alrady Deleted",
+    );
+  }
 
-  const orderData=await Order.findById(id)
-  if(!orderData){
-    throw new AppError(httpStatus.BAD_REQUEST,'This Products is not Exixit')
-  }
-  if(orderData.isDeleted){
-    throw new AppError(httpStatus.BAD_REQUEST,'This Products is alrady Deleted')
-  }
-  
-const resualt=await Order.findByIdAndUpdate(id,{isDeleted:true},{new:true})
-return resualt
-}
+  const resualt = await Order.findByIdAndUpdate(
+    id,
+    { isDeleted: true },
+    { new: true },
+  );
+  return resualt;
+};
 
 export const OrderDataService = {
   createOrderDataFromDB,
   getMyOrderFrolDB,
   cancelOrderFromDB,
-  getMyCancelOrderFrolDB
+  getMyCancelOrderFrolDB,
 };
