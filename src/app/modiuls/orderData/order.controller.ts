@@ -13,6 +13,40 @@ const orderDataCreate = catchAsync(async (req, res) => {
   });
 });
 
+const getMyOrderData = catchAsync(async (req, res) => {
+  const email = req.query.email as string;
+  const resualt = await OrderDataService.getMyOrderFrolDB(email);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Order Data Retrive SuccessFully",
+    data: resualt,
+  });
+});
+const getMyCancelOrderData = catchAsync(async (req, res) => {
+  const email = req.query.email as string;
+  const resualt = await OrderDataService.getMyCancelOrderFrolDB(email);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Order Cancel Data Retrive SuccessFully",
+    data: resualt,
+  });
+});
+const cancelOrder = catchAsync(async (req, res) => {
+  const id = req.query.id as string
+  const resualt = await OrderDataService.cancelOrderFromDB(id);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Order Deleted SuccessFully",
+    data: resualt,
+  });
+});
+
 export const OrderDataController = {
   orderDataCreate,
+  getMyOrderData,
+  cancelOrder,
+  getMyCancelOrderData
 };

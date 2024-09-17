@@ -56,7 +56,7 @@ const userInfoSchema = new Schema<TUserInfo>({
     unique: true,
   },
   phone: {
-    type: Number,
+    type: String,
     required: true,
   },
   email: {

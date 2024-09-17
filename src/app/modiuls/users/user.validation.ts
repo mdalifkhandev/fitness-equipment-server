@@ -16,7 +16,7 @@ export const createUserValidationSchema = z.object({
 
 export const createUserInfoValidationschema = z.object({
   email: z.string().email(),
-  phone: z.number(),
+  phone: z.string(),
   division: z.string(),
   distric: z.string(),
   upzala: z.string(),

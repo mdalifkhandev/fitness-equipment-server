@@ -15,7 +15,7 @@ export type TUserRole = keyof typeof USER_ROLE;
 export type TUserInfo = {
   userID: Types.ObjectId;
   email: string;
-  phone: number;
+  phone: string;
   division: string;
   distric: string;
   upzala: string;

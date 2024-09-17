@@ -59,8 +59,8 @@ const createAddToCardFromDB = async (body: any) => {
   const resualt = await AddToCard.create(body);
   return resualt;
 };
-const getAllAddToCardFromDB = async () => {
-  const resualt = await AddToCard.find();
+const getAllAddToCardFromDB = async (email: string) => {
+  const resualt = await AddToCard.find({ email });
   return resualt;
 };
 const removeAddToCardFromDB = async (id: any) => {

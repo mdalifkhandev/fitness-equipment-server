@@ -44,7 +44,8 @@ const createAddToCard = catchAsync(async (req, res) => {
   });
 });
 const getAllAddToCard = catchAsync(async (req, res) => {
-  const resualt = await ProductsService.getAllAddToCardFromDB();
+  const email = req.query.email as string;
+  const resualt = await ProductsService.getAllAddToCardFromDB(email);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,

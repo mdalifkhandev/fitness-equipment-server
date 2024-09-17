@@ -11,7 +11,7 @@ const orderDataSchema = new Schema<TOrderData>({
     required: true,
   },
   userPhone: {
-    type: Number,
+    type: String,
     required: true,
   },
   userDivision: {
@@ -57,7 +57,14 @@ const orderDataSchema = new Schema<TOrderData>({
     type: Number,
     required: true,
   },
-  
+  productsID: {
+    type: Schema.Types.ObjectId,
+    required: true,
+  },
+  isDeleted:{
+    type:Boolean,
+    default:false
+  }
 });
 
 export const Order = model<TOrderData>("OrderData", orderDataSchema);

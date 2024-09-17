@@ -10,9 +10,9 @@ router.post(
   validateRequest(OrderValidation.orderDataSchema),
   OrderDataController.orderDataCreate,
 );
-router.post(
-  "/payment-intent",
-  OrderDataController.orderDataCreate,
-);
+router.post("/payment-intent", OrderDataController.orderDataCreate);
+router.get("/get-order-data", OrderDataController.getMyOrderData);
+router.get("/get-cancel-data", OrderDataController.getMyCancelOrderData);
+router.delete('/cancel-order',OrderDataController.cancelOrder)
 
 export const OrderDataRouter = router;
