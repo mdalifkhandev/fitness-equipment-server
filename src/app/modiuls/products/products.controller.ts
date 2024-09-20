@@ -33,6 +33,31 @@ const getProductsCatagore = catchAsync(async (req, res) => {
     data: resualt,
   });
 });
+
+const deleteProducts=catchAsync(async(req,res)=>{
+  const id=req.query.id as string
+  const resualt= await ProductsService.deleteProductsFromDB(id)
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Products Deleted Successfully",
+    data: resualt,
+  });
+})
+
+const updathProducts=catchAsync(async(req,res)=>{
+  const id=req.query.id as string
+  const body=req.body
+  const resualt= await ProductsService.updathProductsFromDB(id,body)
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Products Updath Successfully",
+    data: resualt,
+  });
+})
+
+///card
 const createAddToCard = catchAsync(async (req, res) => {
   const body = req.body;
   const resualt = await ProductsService.createAddToCardFromDB(body);
@@ -68,6 +93,9 @@ export const ProductsController = {
   getAllProducts,
   getSingleProducts,
   getProductsCatagore,
+  deleteProducts,
+  updathProducts,
+  ///card
   createAddToCard,
   getAllAddToCard,
   removeAddToCard,

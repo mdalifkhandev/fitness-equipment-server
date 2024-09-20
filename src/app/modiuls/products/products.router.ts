@@ -11,7 +11,9 @@ router.get("/", ProductsController.getAllProducts);
 
 router.get("/catagore", ProductsController.getProductsCatagore);
 
-// router.get("/catagore/:natagoryname", ProductsController.getProductsCatagore);
+router.delete('/products-deleted/',ProductsController.deleteProducts)
+
+router.put('/updath-products',ProductsController.updathProducts)
 
 router.get(
   "/addtocard",

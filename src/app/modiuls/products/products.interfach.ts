@@ -14,6 +14,7 @@ export type TProducts = {
   review: number;
   instock: number;
   discount: number;
+  isDeleted:boolean
 };
 export type TAddToCatd = {
   name: string;
@@ -32,3 +33,5 @@ export type TAddToCatd = {
   instock: number;
   discount: number;
 };
+
+

@@ -51,6 +51,10 @@ const productsSchema = new Schema<TProducts>({
     type: Number,
     required: true,
   },
+  isDeleted: {
+    type: Boolean,
+    default:false
+  },
 });
 
 export const Products = model<TProducts>("products", productsSchema);

@@ -7,7 +7,11 @@ import { Products } from "./products.model";
 const getAllProductsFromDB = async (query: any) => {
   const { catagory, name, minPrice, maxPrice } = query;
   const categoryArray = catagory ? catagory.split(",") : [];
-  const queryObj = {} as any;
+  const queryObj = {
+    isDeleted:false
+  } as any;
+
+  
 
   if (minPrice && maxPrice) {
     queryObj.price = {};
@@ -30,7 +34,7 @@ const getAllProductsFromDB = async (query: any) => {
     (!minPrice || minPrice === "undefined") &&
     (!maxPrice || maxPrice === "undefined")
   ) {
-    return await Products.find();
+    return await Products.find({isDeleted:false});
   }
   const result = await Products.find(queryObj);
   return result;
@@ -46,6 +50,20 @@ const getProductsCatagoreFromDB = async () => {
   return catagore;
 };
 
+
+const deleteProductsFromDB=async(id:string)=>{
+  const resualt=await Products.findByIdAndUpdate(id,{isDeleted:true},{new:true})
+  return resualt
+}
+
+const updathProductsFromDB=async(id:string,payloas:any)=>{
+  console.log(payloas);
+  const resualt=await Products.findByIdAndUpdate(id,payloas,{new:true})
+  return resualt
+}
+
+
+///card
 const createAddToCardFromDB = async (body: any) => {
   const id = body.productID;
 
@@ -68,10 +86,14 @@ const removeAddToCardFromDB = async (id: any) => {
   return resualt;
 };
 
+
 export const ProductsService = {
   getAllProductsFromDB,
   getSingleProductsFromDB,
   getProductsCatagoreFromDB,
+  deleteProductsFromDB,
+  updathProductsFromDB,
+  //card
   createAddToCardFromDB,
   getAllAddToCardFromDB,
   removeAddToCardFromDB,

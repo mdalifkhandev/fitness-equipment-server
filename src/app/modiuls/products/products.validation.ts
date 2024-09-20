@@ -14,6 +14,7 @@ const productsCreateValidationSchema = z.object({
   review: z.number(),
   instock: z.number(),
   discount: z.number(),
+  isDeleted:z.boolean().default(false)
 });
 const adddToCardCreateValidationSchema = z.object({
   name: z.string(),
