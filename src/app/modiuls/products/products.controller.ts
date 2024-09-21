@@ -58,8 +58,6 @@ const updathProducts=catchAsync(async(req,res)=>{
 })
 const createProducts=catchAsync(async(req,res)=>{
   const body=req.body
-  console.log(body);
-  
   const resualt= await ProductsService.createProductsFromDB(body)
   sendResponse(res, {
     statusCode: httpStatus.OK,
