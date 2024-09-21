@@ -14,7 +14,6 @@ const productsSchema = new Schema<TProducts>({
   },
   rating: {
     type: Number,
-    required: true,
   },
   price: {
     type: Number,
@@ -41,7 +40,6 @@ const productsSchema = new Schema<TProducts>({
 
   review: {
     type: Number,
-    required: true,
   },
   instock: {
     type: Number,

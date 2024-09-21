@@ -56,6 +56,18 @@ const updathProducts=catchAsync(async(req,res)=>{
     data: resualt,
   });
 })
+const createProducts=catchAsync(async(req,res)=>{
+  const body=req.body
+  console.log(body);
+  
+  const resualt= await ProductsService.createProductsFromDB(body)
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Products Created Successfully",
+    data: resualt,
+  });
+})
 
 ///card
 const createAddToCard = catchAsync(async (req, res) => {
@@ -95,6 +107,7 @@ export const ProductsController = {
   getProductsCatagore,
   deleteProducts,
   updathProducts,
+  createProducts,
   ///card
   createAddToCard,
   getAllAddToCard,

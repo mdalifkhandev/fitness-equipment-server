@@ -14,6 +14,11 @@ router.get("/catagore", ProductsController.getProductsCatagore);
 router.delete('/products-deleted/',ProductsController.deleteProducts)
 
 router.put('/updath-products',ProductsController.updathProducts)
+router.post(
+  '/create-products',
+  // validateRequest(ProductsValidation.productsCreateValidationSchema),
+  ProductsController.createProducts
+)
 
 router.get(
   "/addtocard",

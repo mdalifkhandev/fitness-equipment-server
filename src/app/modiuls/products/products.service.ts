@@ -57,9 +57,13 @@ const deleteProductsFromDB=async(id:string)=>{
 }
 
 const updathProductsFromDB=async(id:string,payloas:any)=>{
-  console.log(payloas);
   const resualt=await Products.findByIdAndUpdate(id,payloas,{new:true})
   return resualt
+}
+
+const createProductsFromDB=async(payload:any)=>{
+  const resuslt=await Products.create(payload)
+  return resuslt
 }
 
 
@@ -93,6 +97,7 @@ export const ProductsService = {
   getProductsCatagoreFromDB,
   deleteProductsFromDB,
   updathProductsFromDB,
+  createProductsFromDB,
   //card
   createAddToCardFromDB,
   getAllAddToCardFromDB,

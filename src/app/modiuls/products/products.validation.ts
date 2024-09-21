@@ -2,8 +2,10 @@ import { z } from "zod";
 
 const productsCreateValidationSchema = z.object({
   name: z.string(),
-  image: z.string(),
-  rating: z.number(),
+  image: z.object({
+    img1: z.string(),
+  }),
+  rating: z.number().optional(),
   price: z.number(),
   discreption: z.string(),
   extarDiscreption: z.object({
@@ -11,10 +13,10 @@ const productsCreateValidationSchema = z.object({
     details: z.string(),
   }),
   catagory: z.string(),
-  review: z.number(),
+  review: z.number().optional(),
   instock: z.number(),
   discount: z.number(),
-  isDeleted:z.boolean().default(false)
+  isDeleted: z.boolean().default(false),
 });
 const adddToCardCreateValidationSchema = z.object({
   name: z.string(),

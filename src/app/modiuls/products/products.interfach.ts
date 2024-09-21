@@ -3,7 +3,7 @@ export type TProducts = {
   image: {
     img1: string;
   };
-  rating: number;
+  rating?: number;
   price: number;
   discreption: string;
   extarDiscreption: {
@@ -11,7 +11,7 @@ export type TProducts = {
     details: string;
   };
   catagory: string;
-  review: number;
+  review?: number;
   instock: number;
   discount: number;
   isDeleted:boolean
