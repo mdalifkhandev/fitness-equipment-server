@@ -24,6 +24,22 @@ const getSingleProducts = catchAsync(async (req, res) => {
     data: resualt,
   });
 });
+
+const getProductsWitchCheakout = catchAsync(async (req, res) => {
+  const idArray = req.query.ids;
+  let ids: string[] = [];
+  if (typeof idArray === "string") {
+    ids = idArray?.split(",");
+  }
+  const resualt = await ProductsService.getProductsWitchCheakoutFromDB(ids);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: "Products Retrive Successfully",
+    data: resualt,
+  });
+});
+
 const getProductsCatagore = catchAsync(async (req, res) => {
   const resualt = await ProductsService.getProductsCatagoreFromDB();
   sendResponse(res, {
@@ -34,38 +50,38 @@ const getProductsCatagore = catchAsync(async (req, res) => {
   });
 });
 
-const deleteProducts=catchAsync(async(req,res)=>{
-  const id=req.query.id as string
-  const resualt= await ProductsService.deleteProductsFromDB(id)
+const deleteProducts = catchAsync(async (req, res) => {
+  const id = req.query.id as string;
+  const resualt = await ProductsService.deleteProductsFromDB(id);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: "Products Deleted Successfully",
     data: resualt,
   });
-})
+});
 
-const updathProducts=catchAsync(async(req,res)=>{
-  const id=req.query.id as string
-  const body=req.body
-  const resualt= await ProductsService.updathProductsFromDB(id,body)
+const updathProducts = catchAsync(async (req, res) => {
+  const id = req.query.id as string;
+  const body = req.body;
+  const resualt = await ProductsService.updathProductsFromDB(id, body);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: "Products Updath Successfully",
     data: resualt,
   });
-})
-const createProducts=catchAsync(async(req,res)=>{
-  const body=req.body
-  const resualt= await ProductsService.createProductsFromDB(body)
+});
+const createProducts = catchAsync(async (req, res) => {
+  const body = req.body;
+  const resualt = await ProductsService.createProductsFromDB(body);
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
     message: "Products Created Successfully",
     data: resualt,
   });
-})
+});
 
 ///card
 const createAddToCard = catchAsync(async (req, res) => {
@@ -106,6 +122,7 @@ export const ProductsController = {
   deleteProducts,
   updathProducts,
   createProducts,
+  getProductsWitchCheakout,
   ///card
   createAddToCard,
   getAllAddToCard,

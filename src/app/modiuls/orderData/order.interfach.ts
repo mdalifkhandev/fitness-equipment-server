@@ -1,5 +1,3 @@
-import { Types } from "mongoose";
-
 export type TOrderData = {
   userName: string;
   userEmail: string;
@@ -8,13 +6,9 @@ export type TOrderData = {
   userDistric: string;
   userUpzala: string;
   userAddress: string;
-  productsImage: string;
-  productsName: string;
-  productsPrice: number;
-  productsQuentity: number;
-  productsShipping: number;
-  productsTotalPrice: number;
   paymentID?: string;
-  productsID: Types.ObjectId;
   isDeleted: boolean;
+  productsID: string[];
+  quentity: object;
+  totalPrice: number;
 };

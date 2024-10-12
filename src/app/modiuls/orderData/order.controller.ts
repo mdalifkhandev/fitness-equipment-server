@@ -43,10 +43,26 @@ const cancelOrder = catchAsync(async (req, res) => {
     data: resualt,
   });
 });
+const getMyAllOrder = catchAsync(async (req, res) => {
+  const idArray = req.query.ids;
+
+  let ids: string[] = [];
+  if (typeof idArray === "string") {
+    ids = idArray?.split(",");
+  }
+  const resualt = await OrderDataService.getMyAllOrderFromDB(ids);
+  sendResponse(res, {
+    statusCode: httpStatus.OK,
+    success: true,
+    message: " Order All Data Retrive SuccessFully",
+    data: resualt,
+  });
+});
 
 export const OrderDataController = {
   orderDataCreate,
   getMyOrderData,
   cancelOrder,
   getMyCancelOrderData,
+  getMyAllOrder,
 };

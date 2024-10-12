@@ -8,10 +8,8 @@ const getAllProductsFromDB = async (query: any) => {
   const { catagory, name, minPrice, maxPrice } = query;
   const categoryArray = catagory ? catagory.split(",") : [];
   const queryObj = {
-    isDeleted:false
+    isDeleted: false,
   } as any;
-
-  
 
   if (minPrice && maxPrice) {
     queryObj.price = {};
@@ -34,15 +32,22 @@ const getAllProductsFromDB = async (query: any) => {
     (!minPrice || minPrice === "undefined") &&
     (!maxPrice || maxPrice === "undefined")
   ) {
-    return await Products.find({isDeleted:false});
+    return await Products.find({ isDeleted: false });
   }
   const result = await Products.find(queryObj);
   return result;
 };
+
 const getSingleProductsFromDB = async (id: string) => {
   const resualt = await Products.findById(id);
   return resualt;
 };
+
+const getProductsWitchCheakoutFromDB = async (ids: string[]) => {
+  const resualt = await AddToCard.find({ _id: { $in: ids } });
+  return resualt;
+};
+
 const getProductsCatagoreFromDB = async () => {
   const resualt = await Products.find();
   const rrss = resualt.map((catagori) => catagori.catagory);
@@ -50,28 +55,31 @@ const getProductsCatagoreFromDB = async () => {
   return catagore;
 };
 
+const deleteProductsFromDB = async (id: string) => {
+  const resualt = await Products.findByIdAndUpdate(
+    id,
+    { isDeleted: true },
+    { new: true },
+  );
+  return resualt;
+};
 
-const deleteProductsFromDB=async(id:string)=>{
-  const resualt=await Products.findByIdAndUpdate(id,{isDeleted:true},{new:true})
-  return resualt
-}
+const updathProductsFromDB = async (id: string, payloas: any) => {
+  const resualt = await Products.findByIdAndUpdate(id, payloas, { new: true });
+  return resualt;
+};
 
-const updathProductsFromDB=async(id:string,payloas:any)=>{
-  const resualt=await Products.findByIdAndUpdate(id,payloas,{new:true})
-  return resualt
-}
-
-const createProductsFromDB=async(payload:any)=>{
-  const resuslt=await Products.create(payload)
-  return resuslt
-}
-
+const createProductsFromDB = async (payload: any) => {
+  const resuslt = await Products.create(payload);
+  return resuslt;
+};
 
 ///card
 const createAddToCardFromDB = async (body: any) => {
   const id = body.productID;
+  const email = body.email;
 
-  const product = await AddToCard.findOne({ productID: id });
+  const product = await AddToCard.findOne({ productID: id, email: email });
   if (product) {
     throw new AppError(
       httpStatus.BAD_REQUEST,
@@ -90,7 +98,6 @@ const removeAddToCardFromDB = async (id: any) => {
   return resualt;
 };
 
-
 export const ProductsService = {
   getAllProductsFromDB,
   getSingleProductsFromDB,
@@ -98,6 +105,7 @@ export const ProductsService = {
   deleteProductsFromDB,
   updathProductsFromDB,
   createProductsFromDB,
+  getProductsWitchCheakoutFromDB,
   //card
   createAddToCardFromDB,
   getAllAddToCardFromDB,

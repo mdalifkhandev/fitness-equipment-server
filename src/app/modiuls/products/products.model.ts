@@ -51,7 +51,7 @@ const productsSchema = new Schema<TProducts>({
   },
   isDeleted: {
     type: Boolean,
-    default:false
+    default: false,
   },
 });
 

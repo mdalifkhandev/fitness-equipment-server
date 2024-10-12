@@ -11,14 +11,16 @@ router.get("/", ProductsController.getAllProducts);
 
 router.get("/catagore", ProductsController.getProductsCatagore);
 
-router.delete('/products-deleted/',ProductsController.deleteProducts)
+router.get("/cheakout-page", ProductsController.getProductsWitchCheakout);
 
-router.put('/updath-products',ProductsController.updathProducts)
+router.delete("/products-deleted/", ProductsController.deleteProducts);
+
+router.put("/updath-products", ProductsController.updathProducts);
 router.post(
-  '/create-products',
+  "/create-products",
   // validateRequest(ProductsValidation.productsCreateValidationSchema),
-  ProductsController.createProducts
-)
+  ProductsController.createProducts,
+);
 
 router.get(
   "/addtocard",

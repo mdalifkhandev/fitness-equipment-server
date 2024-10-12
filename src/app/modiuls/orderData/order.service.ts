@@ -4,6 +4,7 @@ import config from "../../config";
 import { Order } from "./order.model";
 import AppError from "../../error/AppError";
 import httpStatus from "http-status";
+import { Products } from "../products/products.model";
 
 const createOrderDataFromDB = async (payload: any) => {
   if (payload.price) {
@@ -60,9 +61,15 @@ const cancelOrderFromDB = async (id: string) => {
   return resualt;
 };
 
+const getMyAllOrderFromDB = async (ids: string[]) => {
+  const resualt = await Products.find({ _id: { $in: ids } });
+  return resualt;
+};
+
 export const OrderDataService = {
   createOrderDataFromDB,
   getMyOrderFrolDB,
   cancelOrderFromDB,
   getMyCancelOrderFrolDB,
+  getMyAllOrderFromDB,
 };

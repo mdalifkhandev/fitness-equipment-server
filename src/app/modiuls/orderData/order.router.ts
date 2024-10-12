@@ -18,4 +18,6 @@ router.get("/get-cancel-data", OrderDataController.getMyCancelOrderData);
 
 router.delete("/cancel-order", OrderDataController.cancelOrder);
 
+router.get("/get-all-order", OrderDataController.getMyAllOrder);
+
 export const OrderDataRouter = router;

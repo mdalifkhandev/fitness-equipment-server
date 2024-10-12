@@ -30,37 +30,22 @@ const orderDataSchema = new Schema<TOrderData>({
     type: String,
     required: true,
   },
-  productsImage: {
-    type: String,
-    required: true,
-  },
-  productsName: {
-    type: String,
-    required: true,
-  },
+
   paymentID: {
     type: String,
   },
-  productsPrice: {
-    type: Number,
-    required: true,
-  },
-  productsQuentity: {
-    type: Number,
-    required: true,
-  },
-  productsShipping: {
-    type: Number,
-    required: true,
-  },
-  productsTotalPrice: {
-    type: Number,
-    required: true,
-  },
   productsID: {
-    type: Schema.Types.ObjectId,
+    type: [String],
     required: true,
   },
+  quentity: {
+    type: Object,
+  },
+  totalPrice: {
+    type: Number,
+    required: true,
+  },
+
   isDeleted: {
     type: Boolean,
     default: false,
