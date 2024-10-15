@@ -29,7 +29,7 @@ export type TAddToCatd = {
     details: string;
   };
   catagory: string;
-  review: number;
+  review?: number;
   instock: number;
   discount: number;
 };

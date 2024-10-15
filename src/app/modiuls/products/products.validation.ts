@@ -29,7 +29,7 @@ const adddToCardCreateValidationSchema = z.object({
     details: z.string(),
   }),
   catagory: z.string(),
-  review: z.number(),
+  review: z.number().optional(),
   instock: z.number(),
   discount: z.number(),
   productID: z.string(),

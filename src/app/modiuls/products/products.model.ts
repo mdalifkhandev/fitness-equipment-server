@@ -102,7 +102,6 @@ const addToCardSchema = new Schema<TAddToCatd>({
   },
   review: {
     type: Number,
-    required: true,
   },
   instock: {
     type: Number,
