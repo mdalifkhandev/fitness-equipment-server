@@ -83,7 +83,7 @@ const createAddToCardFromDB = async (body: any) => {
   if (product) {
     throw new AppError(
       httpStatus.BAD_REQUEST,
-      "This products is alrady exixit Your Card",
+      "This products is alrady exisit Your Card",
     );
   }
   const resualt = await AddToCard.create(body);
