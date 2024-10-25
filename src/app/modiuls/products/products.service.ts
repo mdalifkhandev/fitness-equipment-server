@@ -77,9 +77,8 @@ const createProductsFromDB = async (payload: any) => {
 ///card
 const createAddToCardFromDB = async (body: any) => {
   const id = body.productID;
-  const email = body.email;
 
-  const product = await AddToCard.findOne({ productID: id, email: email });
+  const product = await AddToCard.findOne({ productID: id });
   if (product) {
     throw new AppError(
       httpStatus.BAD_REQUEST,
@@ -89,8 +88,8 @@ const createAddToCardFromDB = async (body: any) => {
   const resualt = await AddToCard.create(body);
   return resualt;
 };
-const getAllAddToCardFromDB = async (email: string) => {
-  const resualt = await AddToCard.find({ email });
+const getAllAddToCardFromDB = async () => {
+  const resualt = await AddToCard.find();
   return resualt;
 };
 const removeAddToCardFromDB = async (id: any) => {

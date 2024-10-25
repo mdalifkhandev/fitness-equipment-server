@@ -14,8 +14,8 @@ const orderDataCreate = catchAsync(async (req, res) => {
 });
 
 const getMyOrderData = catchAsync(async (req, res) => {
-  const email = req.query.email as string;
-  const resualt = await OrderDataService.getMyOrderFrolDB(email);
+  // const email = req.query.email as string;
+  const resualt = await OrderDataService.getMyOrderFrolDB();
   sendResponse(res, {
     statusCode: httpStatus.OK,
     success: true,
