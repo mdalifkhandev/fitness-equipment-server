@@ -24,12 +24,12 @@ const createOrderDataFromDB = async (payload: any) => {
   }
 };
 
-const getMyOrderFrolDB = async (email: string) => {
-  const orderfilter = {
-    isDeleted: false,
-    userEmail: email,
-  };
-  const resualt = await Order.find(orderfilter);
+const getMyOrderFrolDB = async () => {
+  // const orderfilter = {
+  //   isDeleted: false,
+  //   userEmail: email,
+  // };
+  const resualt = await Order.find();
   return resualt;
 };
 const getMyCancelOrderFrolDB = async (email: string) => {
