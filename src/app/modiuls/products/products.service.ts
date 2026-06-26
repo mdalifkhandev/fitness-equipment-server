@@ -6,34 +6,32 @@ import { Products } from "./products.model";
 
 const getAllProductsFromDB = async (query: any) => {
   const { catagory, name, minPrice, maxPrice } = query;
-  const categoryArray = catagory ? catagory.split(",") : [];
   const queryObj = {
     isDeleted: false,
   } as any;
 
-  if (minPrice && maxPrice) {
+  const hasMinPrice = minPrice && minPrice !== "undefined";
+  const hasMaxPrice = maxPrice && maxPrice !== "undefined";
+
+  if (hasMinPrice || hasMaxPrice) {
     queryObj.price = {};
-    if (minPrice) {
+    if (hasMinPrice) {
       queryObj.price.$gte = parseFloat(minPrice);
     }
-    if (maxPrice) {
+    if (hasMaxPrice) {
       queryObj.price.$lte = parseFloat(maxPrice);
     }
   }
-  if (catagory && catagory !== "undefined") {
+
+  if (catagory && catagory !== "undefined" && catagory !== "") {
+    const categoryArray = catagory.split(",");
     queryObj.catagory = { $in: categoryArray };
   }
-  if (name && name !== "undefined") {
-    queryObj.$text = { $search: name };
+
+  if (name && name !== "undefined" && name !== "") {
+    queryObj.name = { $regex: name, $options: "i" };
   }
-  if (
-    (!catagory || catagory === "undefined") &&
-    (!name || name === "undefined") &&
-    (!minPrice || minPrice === "undefined") &&
-    (!maxPrice || maxPrice === "undefined")
-  ) {
-    return await Products.find({ isDeleted: false });
-  }
+
   const result = await Products.find(queryObj);
   return result;
 };
