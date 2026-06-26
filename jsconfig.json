@@ -5,5 +5,5 @@
       "checkJs": true
     },
     "exclude": ["node_modules", "**/node_modules/*"],
-    "include": ["src/ /*.js","src/ /*.ts", "src/ /*.jsx"]
+    "include": ["src/**/*.js", "src/**/*.ts", "src/**/*.jsx"]
   }
