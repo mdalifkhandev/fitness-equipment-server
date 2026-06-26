@@ -8,7 +8,7 @@
     "start:dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "prettier": "prettier --ignore-path .gitignore --write \"./src/**/*.+(js|ts|json)\"",
     "prettier:fix": "pnpm exec prettier --write src",
-    "build": "tsc -w",
+    "build": "tsc",
     "node:start": "nodemon ./dist/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
